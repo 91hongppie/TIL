@@ -7,7 +7,7 @@ search = soup.select('#PM_ID_ct > div.header > div.section_navbar > div.area_hot
 print(type(search)) # search의 type확인
 for i in search:
     print(i.text)
-
+#두번째 커밋을 위한 주석!!
 
 #content > div > div.keyword_carousel > div > div > div:nth-child(1) > div > div > ul > li:nth-child(1) > a > span
 #content > div > div.keyword_carousel > div > div > div:nth-child(1) > div > div > ul > li:nth-child(2) > a > span
