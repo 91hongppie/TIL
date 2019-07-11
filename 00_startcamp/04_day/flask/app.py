@@ -98,3 +98,6 @@ def receive():
         choice = random.sample(person,3)
         name = request.args.get('data')
         return render_template('receive.html',choice=choice, name = name)
+
+
+        #이 멍청이들아 didl ajd
