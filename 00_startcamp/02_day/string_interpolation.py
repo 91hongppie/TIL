@@ -1,4 +1,4 @@
-#과거
+    #과거
 '%s %s' % ('one', 'two')
 
 #pyformat(~ 3.5)
@@ -7,5 +7,4 @@
 #f-string(new in 3.6)
 a = 'one'
 b = 'two'
-f'{a}, {b}'
 print(f'{a}, {b}')

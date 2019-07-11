@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>영화 목록</h1>
+    <!-- <ol></ol> 출력값 앞에 1. 삽입 -->
+    <ol></ol>     
+    {% for movie in movies %}
+        <li>{{movie}}</li>
+        <!-- <li></li> 출력값 앞에 점 삽입 -->
+    {% endfor %}
+    
+</body>
+</html>
