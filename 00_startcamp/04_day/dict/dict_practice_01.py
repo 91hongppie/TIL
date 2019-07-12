@@ -1,4 +1,4 @@
-ww"""
+"""
 Python dictionary 연습 문제
 """
 
