@@ -1,0 +1,34 @@
+{
+    'update_id': 591105346, 
+    'message': {
+        'message_id': 11, 
+        'from': {
+            'id': 687358525, 
+            'is_bot': False, 
+            'first_name': '규홍', 
+            'last_name': '조', 
+            'language_code': 'ko'
+            }, 
+        'chat': {
+            'id': 687358525, 
+            'first_name': '규홍', 
+            'last_name': '조', 
+            'type': 'private'
+            }, 
+            'date': 1562898174, 
+            'text': 'aaa' 
+    }
+}
+
+{
+    'message': {
+        '@type': 'response', 
+        '@service': 'naverservice.nmt.proxy', 
+        '@version': '1.0.0', 
+        'result': {
+            'srcLangType': 'ko', 
+            'tarLangType': 'en', 
+            'translatedText': 'apple'
+        }
+    }
+}
