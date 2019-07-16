@@ -58,7 +58,7 @@ for blood in blood_types:
 print(blood_dict)
 2.
 blood_dict = {}
-for blood in blood_types:
+for blood in blood_types:	
     blood_dict[blood] = blood_types.count(blood)
 print(bloot.dict)
 ```
