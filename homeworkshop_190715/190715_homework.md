@@ -24,7 +24,7 @@ print(f'안녕, {name}야')
 6.
 
 
-02_homework.md
+02_workshop.md
 1.
 n = 5
 m = 9
