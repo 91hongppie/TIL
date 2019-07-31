@@ -26,8 +26,9 @@ header, footer, section
 
 <body>
   <form action="#">
-    ID:<input type="text" placeholder="user"><br>
-    PWD:<input type="number" placeholder="****"><input type="submit" value="로그인">
+    ID:<input type="text" ><br>
+    PWD:<input type="password">
+    <input type="submit" value="로그인">
   </form>
 </body>
 
