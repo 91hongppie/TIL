@@ -25,6 +25,9 @@
 
 ```html
 3.
+<!-- 상대경로 -->
 <img src="../Image/my_photo.png" alt="#">
+<!-- 절대경로 -->
+<img src="/SSAFY/Image/my_photo.png" alt="#">
 ```
 
