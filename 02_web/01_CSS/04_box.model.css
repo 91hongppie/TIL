@@ -1,0 +1,81 @@
+div {
+  color: white;
+  width: 100px;
+  height: 100px;
+  background-color: grey;
+}
+
+.margin {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px
+}
+
+.padding {
+  padding-top: 30px;
+  padding-bottom: 30px
+}
+
+.border {
+  border-width: 5px;
+  border-style: dotted;
+  border-color: red;
+  border-top-color: blue;
+  border-radius: 10px;
+  /* border: 5px dotted red; */
+}
+
+.margin-shorthand-1 {
+  /* 상하좌우 10px */
+  /* 상하는 마진상쇄가 일어나서 위아래 박스에서 가장 큰 수치만큼 떨어진다. */
+  margin: 10px;
+}
+.margin-shorthand-2 {
+  /* 상하 10px / 좌우 20px  */
+  margin: 10px 20px;
+}
+.margin-shorthand-3 {
+  /* 상 10px / 좌우 20px / 하 30px */
+  margin: 10px 20px 30px;
+}
+.margin-shorthand-4 {
+  /* 상 10px / 우 20px / 하 30px / 좌 40px */
+  margin: 10px 20px 30px 40px;
+}
+
+/* 가운데 정렬 */
+.align-center {
+  /* 오른쪽, 왼쪽에 반반 나눠준다. */
+  margin: 0 auto
+}
+
+/* 오른쪽 정렬 */
+.align-right {
+  /* 오른쪽의 남은 너비를 왼쪽으로 보낸다(붙인다.) */
+  margin-left: auto;
+}
+
+/* 
+content-box는 padding을 바꾸면 박스 사이즈가 바뀌고
+border-box는 padding을 바꾸면 border는 그대로있고 content-box 가 바뀐다.
+ */
+test {
+  box-sizing: content-box
+}
+
+/* box-sizing */
+.box-sizing {
+  margin: 20px;
+  padding: 20px;
+  border: 10px solid crimson;
+  width: 300px;
+}
+
+.content-box {
+  box-sizing: content-box;
+}
+/* border-box 를 써야한다. */
+.border-box {
+  box-sizing: border-box;
+}

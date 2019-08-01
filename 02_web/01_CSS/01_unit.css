@@ -1,0 +1,41 @@
+html {
+  font-size: 20px;
+}
+
+ol,
+ol li {
+  font-size: 1.2rem
+}
+
+ul,
+ul li {
+  font-size: 1.2em
+}
+
+/* 클래스는 앞에 . */
+/* vw는 창의 너비에 따라 달라진다. */
+.vw {
+  font-size: 10vw;
+}
+/* vh는 창의 높이에 따라 달라진다. */
+.vh {
+  font-size: 10vh
+}
+
+.div-vw {
+  width: 10vw;
+  height: 10vw;
+  background-color: crimson;
+}
+
+.div-vh {
+  width: 10vh;
+  height: 10vh;
+  background-color: rgb(75, 236, 26);
+}
+
+.div-vmin {
+  width: 10vmin;
+  height: 10vmin;
+  background-color: rgba(5, 0, 12, 0.3)
+}

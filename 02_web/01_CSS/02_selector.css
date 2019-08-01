@@ -1,0 +1,39 @@
+/* 태그 선택자 */
+h1 {
+  color: blue;
+}
+/* 순서가 바뀌어도 태그 선택자가 우선순위가 높다. */
+/* 선택자 우선순위 0.!impotant 1.인라인스타일 2.아이디선택자 3.클래스선택자 4.태그선택자 5.전체선택자 */
+/* 전체 선책자 */
+
+* {
+  color: red;
+}
+
+/* 클래스 선택자 */
+.pink {
+  color: pink;
+}
+
+#green {
+  color: green;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.yellow {
+  color: yellow;
+}
+
+
+/* !important 는 가장 강하다 어떤 것을 덮어씌워도 안변함 */
+#orange {
+  color: brown !important;
+  color: orange;
+}
+
+#purple {
+  color: purple;
+}
