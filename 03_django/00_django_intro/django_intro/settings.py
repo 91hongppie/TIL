@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # 1. local apps
     # 2. Third party apps
     # 3. django apps
+    'utilities.apps.UtilitiesConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# 보안
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'django_intro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'django_intro', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

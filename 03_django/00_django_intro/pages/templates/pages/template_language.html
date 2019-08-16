@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h3>1. 반복문</h3>
 
 <!-- forloop 는 DTL for 문 안에서 자동으로 생기는 객체 -->
@@ -96,3 +98,4 @@ Copyright {{ current_year }}
 
 <h3>9. 기타</h3>
 <p>{{ 'google.com'|urlize }}</p> <!-- 이거말고 a 태그 써라-->
+{% endblock  %}
