@@ -1,7 +1,7 @@
 /* 그룹 선택자 */
 p,
 h3 {
-  color: grey;
+  color: burlywood;
 }
 
 /* div 세팅 */
@@ -26,7 +26,7 @@ div {
 
 /* 자식 선택자 한 칸 차이만 자식 */
 ol > li {
-  color: darkgreen;
+  color: chartreuse;
 }
 
 /* 자식 선택자 ol의 아이디를 지정하여 변경 */

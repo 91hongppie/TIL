@@ -42,7 +42,7 @@ div {
 
 .z-index-2 {
   position: absolute;
-  background-color: red;
+  background-color: burlywood;
   top: 30px;
   left: 30px;
   z-index: 97;
