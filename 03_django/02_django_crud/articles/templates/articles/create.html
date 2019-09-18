@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class='text-center'>CREATE</h1>
+<form method="POST">
+  <!-- method 는 기본이 GET 이라 안써도 되지만 쓰는게 좋다. -->
+  {% csrf_token %}
+  <!-- POST를 사용할 때 꼭 써야한다. -->
+  <label for="title">TITLE</label>
+  <input type="text" name="title" id="title"><br>
+  <label for="contect">CONTENT</label>
+  <textarea name="content" id="content" cols="30" rows="5"></textarea><br>
+  <input type="submit" value="submit">
+</form>
+{% endblock  %}

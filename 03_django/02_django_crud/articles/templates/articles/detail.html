@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1 class="text-center">DETAIL</h1>
-  <h2>{{ article.pk }} 번째 글</h2>
-  <hr>
-  <p>제목: {{ article.title }}</p>
-  <p>내용: {{ article.content }}</p>
-  <p>작성 시간: {{ article.created_at }}</p>
-  <p>수정 시간: {{ article.updated_at }}</p>
-  <hr>
-  <a href="/articles/{{ article.pk }}/edit">[EDIT]</a><br>
-  <a href="/articles/{{ article.pk }}/delete">[DELETE]</a><br>
-  <a href="/articles/">[back]</a>
+<h1 class="text-center">DETAIL</h1>
+<h2>{{ article.pk }} 번째 글</h2>
+<hr>
+<p>제목: {{ article.title }}</p>
+<p>내용: {{ article.content }}</p>
+<p>작성 시간: {{ article.created_at }}</p>
+<p>수정 시간: {{ article.updated_at }}</p>
+<hr>
+<a href="{% url 'articles:update' article.pk %}">[UPDATE]</a><br>
+{% comment %} <a href="{% url 'articles:delete' article.pk %}" onclick="return confirm('진짜 지울거야??')">[DELETE]</a><br>
+{% endcomment %}
+<form action="{% url 'articles:delete' article.pk %}" method="POST" onclick="return confirm('진짜 지울거야??')">
+  {% csrf_token %}
+  <input type="submit" value="DELETE">
+</form>
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock  %}

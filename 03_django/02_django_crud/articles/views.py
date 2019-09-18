@@ -12,11 +12,10 @@ def index(request):
     context = {'articles': articles,}
     return render(request, 'articles/index.html', context)
 
-def new(request):
-    return render(request, 'articles/new.html')
-
 def create(request):
-    try:
+    # CREATE
+    if request.method == 'POST':
+    # try:
         title = request.POST.get('title')
         content = request.POST.get('content')
         # 1
@@ -27,39 +26,50 @@ def create(request):
         
         # 2
         article = Article(title=title, content=content)
-        article.full_clean() # 유효성 검증.
-    except ValidationError:
-        raise ValidationError('Error')
-    else:
+    #     article.full_clean() # 유효성 검증.
+    # except ValidationError:
+    #     raise ValidationError('Error')
+    # else:
         article.save()
-        return redirect(f'/articles/{article.pk}') # 메인 페이지
+        return redirect(article) # 메인 페이지
     # 3
     # Article.objects.create(title=title, content=content)
+
+    # NEW
+    else:
+        return render(request, 'articles/create.html')
 
         
 
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
+    article.get_absolute_url()
     context = {'article': article,}
     return render(request, 'articles/detail.html', context)
 
 
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
-    article.delete()
-    return redirect('/articles/') # DB를 건드렸기 때문에 render은 옳지 않다.
+    if request.method == 'POST':
+        article.delete()
+        return redirect('articles:index') # DB를 건드렸기 때문에 render은 옳지 않다.
+    else:
+        return redirect(article)
 
 
-def edit(request, pk):
-    article = Article.objects.get(pk=pk)
-    context = {'article': article,}
-    return render(request, 'articles/edit.html', context)
+# def edit(request, pk):
+#     article = Article.objects.get(pk=pk)
+#     context = {'article': article,}
+#     return render(request, 'articles/edit.html', context)
 
 
 def update(request, pk):
     article = Article.objects.get(pk=pk)
-    
-    article.title = request.POST.get('title')
-    article.content = request.POST.get('content')
-    article.save()
-    return redirect(f'/articles/{article.pk}/')
+    if request.method == 'POST':     
+        article.title = request.POST.get('title')
+        article.content = request.POST.get('content')
+        article.save()
+        return redirect(article)
+    else:
+        context = {'article': article,}
+        return render(request, 'articles/update.html', context)
