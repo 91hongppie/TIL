@@ -1,19 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
-
 {% block content %}
-<img src="{{ article.image_thumbnail.url }}" alt="썸네일">
-
-
-
-
-
 <h1 class="text-center">DETAIL</h1>
-{% if article.image %}
-<img src="{{ article.image.url }}" alt="{{ article.image }}">
-{% else %}
-<img src="{% static 'articles/images/no_image.jpg' %}" alt="no_image">
-{% endif %}
 <h2>{{ article.pk }} 번째 글</h2>
 <hr>
 <p>제목: {{ article.title }}</p>
@@ -23,8 +10,8 @@
 <hr>
 <!-- 댓글 작성 form -->
 <p><b>{{ comments|length }}개의 댓글</b></p>
-<!-- <p><b>{{ article.comment_set.all|length }}개의 댓글</b></p> -->
-<!-- <p><b>{{ comments.count }}개의 댓글</b></p> -->
+<p><b>{{ article.comment_set.all|length }}개의 댓글</b></p>
+<p><b>{{ comments.count }}개의 댓글</b></p>
 {% for comment in comments  %}
 <li>{{ comment.content }}
   <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST" style="display: inline;">

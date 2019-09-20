@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
-<!-- extends는 가장 위쪽에 위치 -->
-{% load static %}
-
 {% block content %}
-<img src="{% static 'articles/images/starbucks.png' %}" alt="starbucks">
 <h1 class="text-center">Articles</h1>
 <a href="{% url 'articles:create' %}">[NEW]</a>
 <hr>

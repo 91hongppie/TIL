@@ -1,13 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
 <h1 class='text-center'>UPDATE</h1>
-{% if article.image %}
-<img src="{{ article.image.url }}" alt="sample">
-{% else %}
-<img src="{% static '/articles/images/no_image.jpg' %}" alt="no_image">
-{% endif %}
-<form method="POST" enctype="multipart/form-data">
+<form method="POST">
   <!-- method 는 기본이 GET 이라 안써도 되지만 쓰는게 좋다. -->
   {% csrf_token %}
   <!-- POST를 사용할 때 꼭 써야한다. -->
@@ -16,8 +11,6 @@
   <!-- value="{{ article.title }} 기존의 글에 있던 제목을 가져온다. -->
   <label for="contect">CONTENT</label>
   <textarea name="content" id="content" cols="30" rows="5">{{ article.content }}</textarea><br>
-  <label for="image">IMAGE</label>
-  <input type="file" name="image" id="image" accept="image/*"><br>
   <!-- {{ article.content }} 기존의 글에 있던 content 로 가져온다. -->
   <input type="submit" value="submit">
 </form>

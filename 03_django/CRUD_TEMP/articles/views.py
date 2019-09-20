@@ -18,7 +18,6 @@ def create(request):
     # try:
         title = request.POST.get('title')
         content = request.POST.get('content')
-        image = request.FILES.get('image')
         # 1
         # article = Article()
         # article.title = title
@@ -26,7 +25,7 @@ def create(request):
         # article.save()
         
         # 2
-        article = Article(title=title, content=content, image=image)
+        article = Article(title=title, content=content)
     #     article.full_clean() # 유효성 검증.
     # except ValidationError:
     #     raise ValidationError('Error')
@@ -69,7 +68,6 @@ def update(request, article_pk):
     if request.method == 'POST':     
         article.title = request.POST.get('title')
         article.content = request.POST.get('content')
-        article.image = request.FILES.get('image')
         article.save()
         return redirect(article)
     else:
