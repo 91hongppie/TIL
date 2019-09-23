@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">NEW</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<label for="title">TITLE</label>
+<input type="text" name="title" id="title"><br>
+<label for="issue_a">issue_a</label>
+<input type="text" name="issue_a" id="issue_a"><br>
+<label for="issue_b">issue_b</label>
+<input type="text" name="issue_b" id="issue_b"><br>
+<label for="image_a">image_a</label>
+<input type="file" name="image_a" id="image_a"><br>
+<label for="image_b">image_b</label>
+<input type="file" name="image_b" id="image_b"><br>
+<input type="submit" value="submit">
+</form>
+{% endblock  %}

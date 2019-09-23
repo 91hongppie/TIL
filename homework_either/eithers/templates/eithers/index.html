@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Question</h1>
+<a href="{% url 'question:new' %}">NEW</a>
+{% for question in questions %}
+<p>{{ question.title }} {{ question.comment_set.all|length }}</p>
+<a href="{{ question.get_absolute_url }}">DETAIL</a>
+{% endfor %}
+{% endblock  %}
