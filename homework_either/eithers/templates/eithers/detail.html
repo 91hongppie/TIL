@@ -14,10 +14,10 @@
 
 
 {% for answer in answers %}
-<p>댓글: {{ answer.comment }}</p>
 <form action="{% url 'question:answers_delete' question.pk answer.pk %}" method="POST">
   {% csrf_token %}
-  <input type="submit" value="delete">
+  <p class="d-inline-block">댓글: {{ answer.comment }}</p>
+  <input class="d-block ml-auto" type="submit" value="delete">
 </form>
 {% endfor %}
 <form action="{% url 'question:answers_create' question.pk %}" method="POST">
@@ -31,6 +31,7 @@
     </label>
     </label>
   </div>
+  <br>
   <!-- <input type="radio" name="pick" id="pick" value="0">{{ question.issue_a }}
   <br>
   <input type="radio" name="pick" id="pick" value="1">{{ question.issue_b }}
