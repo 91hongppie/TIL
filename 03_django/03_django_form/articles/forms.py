@@ -64,8 +64,7 @@ class ArticleForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    comment = forms.CharField()
 
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ['content']

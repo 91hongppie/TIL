@@ -8,21 +8,31 @@
 <p>{{ article.created_at|date:"SHORT_DATETIME_FORMAT" }}</p>
 <p>{{ article.updated_at|date:"M, j ,Y" }}</p>
 <a href="{% url 'articles:update' article.pk %}">[UPDATE]</a>
-{% for comment in form %}
-<form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
-  {% csrf_token %}
-  <p class="d-inline-block">댓글: {{ comment.comment }}</p>
-  <input type="submit" value="delete">
-</form>
-{% endfor %}
-<form action="{% url 'articles:comments_create' article.pk %}">
-  <label for="comment">COMMENT</label>
-  <input type="text" name="comment" id="comment">
-  <input type="submit" value="submit">
-</form>
 <form action="{% url 'articles:delete' article.pk %}" method="POST">
   {% csrf_token %}
   <input type="submit" value="delete">
+</form>
+<hr>
+<!-- 댓글 출력 -->
+{% for comment in comments %}
+<div>
+  댓글 {{ forloop.revcounter }}: {{ comment.content }}
+  <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST" style="display-inline">
+    {% csrf_token %}
+    <input type="submit" value="delete">
+  </form>
+</div>
+
+
+{% empty %}
+<p><b>댓글이 없습니다.</b></p>
+{% endfor %}
+<hr>
+<!-- 댓글 입력 form -->
+<form action="{% url 'articles:comments_create' article.pk %}" method="POST">
+  {% csrf_token %}
+  {{ comment_form }}
+  <input type="submit" value="submit">
 </form>
 <a href="{% url 'articles:index' %}">[back]</a>
 {% endblock  %}

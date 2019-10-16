@@ -22,10 +22,12 @@ class Article(models.Model):
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    comment = models.TextField()
+    content = models.CharField(max_length=140)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['-pk']
 
     def __str__(self):
-        return f'<Article({self.article_id}): Comment({self.pk})-{self.comment}>'
+        return self.content
