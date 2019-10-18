@@ -127,7 +127,7 @@ TIL
 
    ```python
    # orm
-   user = User(fisrt_name='홍은', last_name='박', age = 24, country = '거제', phone='010-1234-5678', balance='1000000')
+   User.objects.create(fisrt_name='홍은', last_name='박', age = 24, country = '거제', phone='010-1234-5678', balance='1000000')
    ```
 
    ```sql
@@ -143,7 +143,7 @@ TIL
 
    ```python
    # orm
-   User.objects.filter(id=101).values()
+   User.objects.get(pk=1)
    ```
 
    ```sql
@@ -175,9 +175,8 @@ TIL
 
    ```python
    # orm
-   user = User.objects.get(pk=101)
-user.delete()
-   ```
+   User.objects.get(pk=101).delete()
+```
    
    ```sql
    -- sql
@@ -199,6 +198,8 @@ user.delete()
    ```python
    # orm
    User.objects.count()
+   User.objects.all().count()
+   len(User.objects.all())
    ```
 
    ```sql
@@ -214,6 +215,7 @@ user.delete()
    ```python
    # orm
    User.objects.filter(age=30).values('first_name')
+   
    ```
 
       ```sql
@@ -290,12 +292,15 @@ user.delete()
    ```python
    # orm
    User.objects.filter(country='강원도' , last_name='황').values('first_name')
+   Out[15]: <QuerySet [{'first_name': '은정'}]>
+   # 이름만 가져오고 싶을 때
+   User.objects.filter(country='강원도' , last_name='황').values('first_name').first().get('first_name')
+   Out[14]: '은정'
+   ```
+```bash
+#sql
+SELECT name FROM users_user WHERE country='강원도' and last_name='황';
 ```
-   
-      ```sql
-   -- sql
-   SELECT name FROM users_user WHERE country='강원도' and last_name='황';
-      ```
 
 
 
@@ -321,6 +326,7 @@ user.delete()
 
    ```python
    # orm
+   User.objects.order_by('balance')[:10]
    ```
 
       ```sql
@@ -332,8 +338,9 @@ user.delete()
 
       ```python
    # orm
-   ```
-
+   User.objects.order_by('balance', '-age')[:10]
+```
+   
    ```sql
    -- sql
    SELECT * FROM users_user ORDER BY balance and age DESC LIMIT 10;
@@ -343,8 +350,9 @@ user.delete()
 
    ```python
    # orm
-   ```
-
+   User.objects.order_by('-last_name', '-first_name')[4]
+```
+   
       ```sql
    -- sql
    SELECT * FROM users_user ORDER BY balance, age DESC LIMIT 1 OFFSET 4;
@@ -369,6 +377,8 @@ user.delete()
 
    ```python
    # orm
+   from django.db.models import Avg
+   User.objects.all().aggregate((Avg('age')))
    ```
 
       ```sql
@@ -380,6 +390,7 @@ user.delete()
 
    ```python
    # orm
+   User.objects.filter(last_name='김').aggregate((Avg('age')))
    ```
 
       ```sql
@@ -391,6 +402,8 @@ user.delete()
 
    ```python
    # orm
+   from django.db.models import Avg
+   User.objects.filter(country='강원도').aggregate((Avg('balance')))
    ```
 
    ```sql
@@ -402,6 +415,8 @@ user.delete()
 
    ```python
    # orm
+   from django.db.models import Max
+   User.objects.all().aggregate((Max('balance')))
    ```
 
       ```sql
@@ -413,8 +428,10 @@ user.delete()
 
    ```python
    # orm
+   from django.db.models import Sum
+User.objects.all().aggregate((Sum('balance')))
    ```
-
+   
       ```sql
    -- sql
    SELECT SUM(balance) FROM users_user

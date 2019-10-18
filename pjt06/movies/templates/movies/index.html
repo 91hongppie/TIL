@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Movies</h1>
+<hr>
+<a href="{% url 'movies:create' %}">[새 글]</a>
+<hr>
+{% for movie in movies %}
+<h2><a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a></h2>
+<p>{{ movie.score }}</p>
+<a href="{% url 'movies:detail' movie.pk %}">[영화 상세 정보]</a>
+<form action="{% url 'movies:delete' movie.pk %}" method='POST'>
+  {% csrf_token %}
+  <input type="submit" value="삭제">
+</form>
+<hr>
+{% endfor %}
+{% endblock content %}
