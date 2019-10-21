@@ -1,7 +1,15 @@
 {% extends 'articles/base.html' %}
 {% block content %}
 <h1>Article</h1>
+
+<p><b>당신의 방문 횟수 : {{ visits_num }}{% if visits_num <= 1 %}time{% else %}times{% endif %}</b></p>
+{% if user.is_authenticated %}
 <a href="{% url 'articles:create' %}">[NEW]</a>
+{% else %}
+<a class="btn btn-warning" href="{% url 'accounts:login' %}" style="display: inline">글 작성하고 싶으면 로그인하던가~~</a>
+<a class="btn btn-warning" href="{% url 'accounts:signup' %}" style="display: inline">글 작성하고 싶은데 아이디없으면 가입하던가~~</a>
+{% endif %}
+<hr>
 {% for article in articles %}
 <p>{{ article.pk }}</p>
 <p>{{ article.title }}</p>

@@ -12,6 +12,24 @@
 
 <body>
   <div class="container">
+    {% if user.is_authenticated %}
+    <h3>
+      Hello, {{ user.username }}
+      <a class="btn btn-warning" href="{% url 'accounts:update' %}">정보수저어어엉</a>
+      <a class="btn btn-warning" href="{% url 'accounts:change_password' %}">비번 변겨어어오엉</a>
+
+      <a class="btn btn-info" href="{% url 'accounts:logout' %}">로그아우우우웃</a>
+      <form action="{% url 'accounts:delete' %}" method="POST" style="display: inline">
+        {% csrf_token %}
+        <input type="submit" value="회원탈퇴" class="btn btn-danger">
+      </form>
+    </h3>
+    {% else %}
+    <a class="btn btn-warning" href="{% url 'accounts:update' %}">로구우우우우인</a>
+    <a class="btn btn-warning" href="{% url 'accounts:change_password' %}">회원가이이이입 </a>
+
+    {% endif %}
+    <hr>
     {% block content %}
     {% endblock  %}
     {% bootstrap_javascript jquery='full' %}
