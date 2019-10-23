@@ -4,7 +4,8 @@ from .models import Article, Comment
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'title', 'content', 'created_at', 'updated_at',)
+    list_display = ('pk', 'title', 'content',
+                    'created_at', 'updated_at', 'user_id')
 
 
 admin.site.register(Article, ArticleAdmin)
@@ -19,4 +20,5 @@ admin.site.register(Article, ArticleAdmin)
 # 위와 동일한 코드 편한거 써라
 @admin.register(Comment)
 class Admin(admin.ModelAdmin):
-    list_display = ('pk', 'content', 'created_at', 'updated_at', 'article_id',)
+    list_display = ('pk', 'content', 'created_at',
+                    'updated_at', 'article_id', 'user_id',)

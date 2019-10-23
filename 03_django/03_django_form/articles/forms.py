@@ -54,7 +54,7 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         # fields = ('title', 'content',)
-        fields = '__all__'
+        fields = ('title', 'content',)
         # exclude = ('title',)
         # widgets = {
         #     'title': forms.TextInput(attrs={
@@ -67,4 +67,4 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ['content']
+        fields = ('content',)
