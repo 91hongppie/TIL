@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Comment
+from .models import Article, Comment, Hashtag
 # Register your models here.
 
 
@@ -22,3 +22,10 @@ admin.site.register(Article, ArticleAdmin)
 class Admin(admin.ModelAdmin):
     list_display = ('pk', 'content', 'created_at',
                     'updated_at', 'article_id', 'user_id',)
+
+
+class HashtagAdmin(admin.ModelAdmin):
+    list_display = ('content',)
+
+
+admin.site.register(Hashtag, HashtagAdmin)
