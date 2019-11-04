@@ -1,0 +1,36 @@
+{% load bootstrap4 %}
+{% load gravatar %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/0321ecdd79.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  {% bootstrap_css %}
+  <title>Document</title>
+</head>
+
+<body>
+  {% include 'articles/_nav.html' %}
+  <div class="container">
+    {% comment %}
+    <!--
+    {% if user.is_authenticated %}
+    <h3>Hello, {{ user.username }}</h3>
+    <a href="{% url 'accounts:logout' %}">[로그아웃]</a>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">[로그인]</a>
+    <a href="{% url 'accounts:signup' %}">[회원가입]</a>
+    {% endif %}
+--> {% endcomment %}
+    <!-- request는 어디서든 사용할 수 있음. -->
+    {% block content %}
+    {% endblock content %}
+  </div>
+  {% bootstrap_javascript jquery='full' %}
+</body>
+
+</html>
