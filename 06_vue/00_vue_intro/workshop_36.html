@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="color">TOGGLE</button>
+        <div :style="{ color: activeColor }">
+            <h1>{{ message }}</h1>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '빨강과 파랑을 섞으면 보라색이 됩니다.',
+                activeColor: 'red',
+            },
+            methods: {
+                color: function () {
+                    if (this.activeColor === 'red') {
+                        this.activeColor = 'blue'
+                    } else {
+                        this.activeColor = 'red'
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
