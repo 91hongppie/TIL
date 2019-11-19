@@ -6,7 +6,7 @@
     <video-detail :video="selectedVideo"></video-detail>
     <video-list @videoSelect="onVideoSelect" :videos="videos"></video-list>
     </div>
-    <!-- :videos="videos" 오른쪽이 배열 왼쪽이 VideoList 에서 사용 -->
+    <!-- :videos="videos" 오른쪽이 배열, 왼쪽이 VideoList 에서 사용 -->
   </div>
 </template>
 
