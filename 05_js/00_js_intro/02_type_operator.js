@@ -39,5 +39,5 @@ const hacking = 'world' + 'lol' + '!!!'
 console.log(happy, hacking)
 
 // Number.isNaN() 함수는 값이 NaN 인지 여부를 판별.
-Number.isNaN(1 + null) // false (숫자임)
-Number.isNaN(1 + undefined) // true (숫자가 아님)
+console.log(Number.isNaN(1 + null)) // false (숫자임)
+console.log(Number.isNaN(1 + undefined)) // true (숫자가 아님)

@@ -9,9 +9,9 @@ console.log(a)
 // console.log(a)
 
 // let 은 안된다. ...RegerenceError
-console.log(b)
-let b = 10
-console.log(b)
+// console.log(b)
+// let b = 10
+// console.log(b)
 
 // 마찬가지로 아래와 같은 과정을 거친다.
 let b // 선언

@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1 class="text-center">Movies</h1>
+  <div class="m-0" style="background-image: url('http://image14.hanatour.com/uploads/2012/02/IMG_19961.jpg'); background-attachment: fixed; position: relative; background-size: cover; background-repeat: no-repeat; background-position: center; background-blend-mode: screen;">
+<div class="container">
+<h1 class="text-center text-dark">영화 목록</h1>
 <hr>
-<a href="{% url 'movies:create' %}">[새 글]</a>
+
+<a href="{% url 'movies:create' %}"><button type="button" class="btn btn-secondary">새 영화 추가</button></a>
 <hr>
+{% comment %} <img src="{% static 'movies/images/sample_img.jpg' %}" alt="" class="bg-img img-fluid"> {% endcomment %}
 {% for movie in movies %}
-<h2><a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a></h2>
-<p>{{ movie.score }}</p>
-<a href="{% url 'movies:detail' movie.pk %}">[영화 상세 정보]</a>
+<a href="{% url 'movies:detail' movie.pk %}"><h2 class="d-inline text-dark">{{ movie.title }}</h2><h5 class="d-inline text-dark">({{ movie.title_en }}, {{ movie.open_date.year }})</h5></a>
+
+<h6><p>평점: {{ movie.score }}</p></h6>
 <form action="{% url 'movies:delete' movie.pk %}" method='POST'>
   {% csrf_token %}
-  <input type="submit" value="삭제">
+  <button type="submit" class="btn btn-secondary">삭제</button>
 </form>
 <hr>
 {% endfor %}
+</div>
 {% endblock content %}

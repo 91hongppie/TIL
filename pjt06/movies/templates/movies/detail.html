@@ -1,18 +1,69 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="card mx-auto" style="width: 80%;">
 <h1 class="text-center">[영화 상세 정보]</h1>
-<p>제목: {{ movie.title }}</p>
-<p>영어 제목: {{ movie.title_en }}</p>
+<img src="{{ movie.poster_url }}" class='d-block w-50 mx-auto' alt="poster">  <div class="card-body">
+    <h5 class="card-title">{{ movie.title }}</h5>
+    <p class="card-text"><p>영어 제목: {{ movie.title_en }}</p>
+<p>관객수: {{ movie.audience }}</p>
+<p>개봉일: {{ movie.open_date }}</p>
+<p>장르: {{ movie.genre }}</p>
+<p>관람등급: {{ movie.watch_grade }}</p>
+<p>평점: {{ movie.score }}</p>
+<p><a href="{{ movie.poster_url }}">원본 이미지 보러가기</a></p>
+<p>내용: <br>{{ movie.description }}</p></p>
+<hr>
+{% for review in reviews %}
+<p>{{ forloop.revcounter }}번째 리뷰</p>
+<p>평점: {{ review.score }}</p>
+<p>내용: {{ review.content }} </p>
+<hr>
+{% empty %}
+<p>리뷰는 제작자에게 큰 힘이 됩니다.</p>
+{% endfor %}
+<form action="{% url 'movies:reviews_create' movie.pk %}" method='POST'>
+{% csrf_token %}
+{{ review_form }}
+<input type="submit" value="submit">
+</form>
+<a href="{% url 'movies:index' %}"><button type="button" class="btn btn-danger"><span class="text-light">목록</span></button></a>
+<a href="{% url 'movies:update' movie.pk %}"><button type="button" class="btn btn-primary"><span class="text-light">수정</span></button></a>
+
+<form class='d-inline' action="{% url 'movies:delete' movie.pk %}" method='POST'>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-warning"><span class="text-light">삭제</span></button>
+</form>
+  </div>
+</div>
+{% comment %} <img src="{{ movie.poster_url }}" class='d-block w-50 mx-auto' alt="poster"> {% endcomment %}
+{% comment %} <p>제목: {{ movie.title }}</p> {% endcomment %}
+{% comment %} <p>영어 제목: {{ movie.title_en }}</p>
 <p>관객수: {{ movie.audience }}</p>
 <p>개봉일: {{ movie.open_date }}</p>
 <p>장르: {{ movie.genre }}</p>
 <p>관람등급: {{ movie.watch_grade }}</p>
 <p>평점: {{ movie.score }}</p>
 <p>이미지 주소: <a href="{{ movie.poster_url }}">{{ movie.poster_url }}</a></p>
-<p>줄거리: {{ movie.description }}</p>
-<a href="{% url 'movies:index' %}">[뒤로 가기]</a>
-<form action="{% url 'movies:delete' movie.pk %}" method='POST'>
-  {% csrf_token %}
-  <input type="submit" value="삭제">
+<p>줄거리: {{ movie.description }}</p> {% endcomment %}
+{% comment %} <hr>
+{% for review in reviews %}
+<p>{{ forloop.revcounter }}번째 리뷰</p>
+<p>평점: {{ review.score }}</p>
+<p>내용: {{ review.content }} </p>
+<hr>
+{% empty %}
+<p>댓글이 없어요...</p>
+{% endfor %}
+<form action="{% url 'movies:reviews_create' movie.pk %}" method='POST'>
+{% csrf_token %}
+{{ review_form }}
+<input type="submit" value="submit">
 </form>
+<a href="{% url 'movies:index' %}"><button type="button" class="btn btn-danger"><span class="text-light">목록</span></button></a>
+<a href="{% url 'movies:update' movie.pk %}"><button type="button" class="btn btn-primary"><span class="text-light">수정</span></button></a>
+
+<form class='d-inline' action="{% url 'movies:delete' movie.pk %}" method='POST'>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-warning"><span class="text-light">삭제</span></button>
+</form> {% endcomment %}
 {% endblock content %}

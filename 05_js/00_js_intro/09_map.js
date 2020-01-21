@@ -44,7 +44,8 @@ const images = [{
         width: '56px'
     },
 ]
-const heights = images.map(image => image.height)
+const heights = images.map(function(image) {
+ return image.height})
 console.log(heights)
 
 // 2-3 map 
@@ -61,7 +62,9 @@ const trips = [{
         time: 25
     },
 ]
-const speeds = trips.map(trip => trip.distance / trip.time)
+const speeds = trips.map(function(trip) {
+ return trip.distance / trip.time
+})
 console.log(speeds)
 
 // 2-4

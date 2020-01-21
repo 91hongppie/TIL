@@ -26,5 +26,5 @@ const arr = [0, 1, 2, 3]
 const totalSum = arr.reduce(function (total, x) {
     return total += x
 }, 0)
-
+console.log(totalSum)
 // const totalSum = arr.reduce((total, x) => total += x, 0)

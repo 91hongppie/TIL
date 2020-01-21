@@ -7,9 +7,9 @@
   <hr class="my-4">
   {% if user != article.user %} <!-- 게시글 유저와 로그인한 유저가 달라야 팔로우 가능!! -->
   {% if user in followers %}
-    <a class="btn btn-primary btn-lg" href="{% url 'articles:follow' article.pk person.pk %}" role="button">Unfollow</a> <!-- person.pk 게시글 쓴 사람??-->
+    <a class="btn btn-primary btn-lg" href="{% url 'articles:follow' article.pk review.user.pk %}" role="button">Unfollow</a> <!-- person.pk 게시글 쓴 사람??-->
   {% else %}
-    <a class="btn btn-primary btn-lg" href="{% url 'articles:follow' article.pk person.pk %}" role="button">follow</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'articles:follow' article.pk review.user.pk %}" role="button">follow</a>
   {% endif %}
   {% endif %}
   {% endwith %}

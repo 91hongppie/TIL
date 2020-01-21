@@ -55,6 +55,7 @@ const FRUIT_PRODUCTS = PRODUCTS.filter(function (product) {
     return product.type === 'fruit'
     // 해당 조건이 true 를 만족할 경우에 return
 })
+// const FRUIT_PRODUCTS = PRODUCTS.filter(product => product.type === 'fruit')
 
 // const FRUIT_PRODUCTS = PRODUCTS.filter(product => product.type === 'fruit')
 console.log(FRUIT_PRODUCTS)
@@ -97,5 +98,8 @@ const users = [{
 //     }
 // }
 
-const filteredUsers = users.filter(user => user.admin === true)
+// const filteredUsers = users.filter(user => user.admin === true)
+const filteredUsers = users.filter(function(user) {
+    return user.admin === true
+})
 console.log(filteredUsers[1].name)

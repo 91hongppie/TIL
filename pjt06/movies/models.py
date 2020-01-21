@@ -23,8 +23,8 @@ class Movie(models.Model):
 
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    content = models.TextField()
-    score = models.IntegerField()
+    content = models.CharField(max_length=200)
+    score = models.FloatField()
 
     class Meta:
         ordering = ('-pk',)
