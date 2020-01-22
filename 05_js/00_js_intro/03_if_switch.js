@@ -8,7 +8,7 @@ if (userName === '1q2w3e4r') {
 } else {
     message = `<h1>hello ${userName}</h1>`
 }
-
+console.log(message)
 // switch
 switch (userName) {
     case '1q2w3e4r': {
@@ -24,3 +24,4 @@ switch (userName) {
         console.log(message)
     }
 }
+console.log(message)

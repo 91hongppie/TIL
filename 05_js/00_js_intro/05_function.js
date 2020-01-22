@@ -22,41 +22,41 @@ console.log(typeof sub)
 // 화살표 함수는 항상 익명입니다.
 // 변수에 할당할 수 있지만, 이름 붙은 함수(생성자)로는 만들 수 없습니다.
 
-const ssafy1 = function (name) {
-    return 'hello, ${name}'
-}
+// const ssafy1 = function (name) {
+//     return 'hello, ${name}'
+// }
 
 // 리팩토링(refactoring)
 // 1. function 키워드 삭제
-const ssafy1 = (name) => {
-    return `hello, ${name}`
-}
+// const ssafy1 = (name) => {
+//     return `hello, ${name}`
+// }
 
 // 2. 매개변수의 '()' 소괄호 생략 (단, 함수 매개변수(name) 가 하나일 경우만)
-const ssafy1 = name => {
-    return `hello, ${name}`
-}
+// const ssafy1 = name => {
+//     return `hello, ${name}`
+// }
 
 // 3. {} && return 생략 (단, 함수의 바디에 표현식(return `hello, ${name}`) 이 1개일 경우만)
 const ssafy1 = name => `hello, ${name}`
 
 // Arrow function refactoring
-let square = function (num) {
-    return num ** 2
-}
+// let square = function (num) {
+//     return num ** 2
+// }
 
-let square = (num) => {
-    return num ** 2
-}
-let square = num => {
-    return num ** 2
-}
+// let square = (num) => {
+//     return num ** 2
+// }
+// let square = num => {
+//     return num ** 2
+// }
 let square = num => num ** 2
 
 
 // 매개변수가 없다면? () 나 _ 를 사용
 let noArgs = () => 'No args'
-let noArgs = _ => 'No args'
+// let noArgs = _ => 'No args'
 
 // object 를 return 한다면
 let returnObject = () => {
@@ -68,15 +68,15 @@ console.log(returnObject()) // { key: 'value' }
 
 
 // object 를 return 하는데 return 을 사용하지 않을 경우
-let returnObject = () => ({
-    key: 'value'
-})
+// let returnObject = () => ({
+//     key: 'value'
+// })
 
 // object return 시 문제상황
 // 1. return 이 없는데 () 를 안쓴 경우
-let returnObject = () => {
-    key: 'value'
-}
+// let returnObject = () => {
+//     key: 'value'
+// }
 const test = returnObject() // { key: 'value' }
 console.log(typeof test) // undefined
 

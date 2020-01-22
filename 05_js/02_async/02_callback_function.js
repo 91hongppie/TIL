@@ -11,7 +11,7 @@ const numberAddEach = number => {
 const numberSubEach = number => {
     let sub = 0
     for (const number of numbers) {
-        sub += number
+        sub -= number
     }
     return sub
 }
@@ -20,7 +20,7 @@ const numberSubEach = number => {
 const numberMulEach = number => {
     let mul = 0
     for (const number of numbers) {
-        mul += number
+        mul *= number
     }
     return mul
 }

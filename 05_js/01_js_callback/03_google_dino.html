@@ -28,10 +28,11 @@
         let x = 0
         let y = 0
         document.addEventListener(`keydown`, function (e) {
-            // console.log(e)
+            console.log(e)
             if (e.key === ` `) {
                 console.log('spacebar')
             } else if (e.code === `ArrowLeft`) {
+                console.log('left')
                 x -= 20
                 dino.style.marginLeft = `${x}px`
             } else if (e.code === `ArrowUp`) {
@@ -39,6 +40,7 @@
                 y -= 20
                 dino.style.marginTop = `${y}px`
             } else if (e.keyCode === 39) {
+                console.log('right')
                 x += 20
                 dino.style.marginLeft = `${x}px`
             } else if (e.code === `ArrowDown`) {
