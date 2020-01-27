@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{ message }} - {{ count }}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        count: 0, //  count 추가
+      },
+      methods: {
+        plus: function() {
+          this.count++ // Vue instance 내에서는 data 내의 값들에 this 로 접근가능
+        },
+        // plus: () => { // 화살표로 하면 Undefined 가 뜨면서 숫자가 카운팅되지 않는다.
+        //   this.count++ // Vue instance 내에서는 data 내의 값들에 this 로 접근가능
+        // },
+        // 선언식
+        minus() {
+          this.count--
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>
