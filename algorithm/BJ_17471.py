@@ -15,18 +15,16 @@ def comb(nums, nums_list):
         nums_list.pop()
         comb(nums+1, nums_list)
 
-def DFS(num_list, leng):
+def DFS(num_list):
     global count
-    if len(num_list) == leng:
-        count += leng
-        return
     for k in range(len(num_list)):
         for u in range(len(num_list)):
             if num_list[u] in Q[num_list[k]]:
                 if not visit[num_list[u]]:
                     visit[num_list[u]] = True
-                    DFS(num_list, leng+1)
-            
+                    count += 1
+                    DFS(num_list)
+
 
 N = int(input())
 points = list(map(int, input().split()))
@@ -55,9 +53,11 @@ for u in comb_list:
             b_list.append(i)
     count = 0
     visit[u[0]] = True
-    DFS(u, 1)
+    count += 1
+    DFS(u)
     visit[b_list[0]] = True
-    DFS(b_list, 1)
+    count += 1
+    DFS(b_list)
     if count == N:
         sum_u = 0
         sum_b = 0
@@ -66,6 +66,7 @@ for u in comb_list:
         for y in b_list:
             sum_b += points[y-1]
         result = min(result, abs(sum_u-sum_b))
+
 if result != 100000000000:
     print(result)
 else:
