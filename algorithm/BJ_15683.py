@@ -3,9 +3,15 @@ sys.stdin = open('BJ_15683.txt', 'r')
 from pprint import pprint
 
 def DFS(cctv_num, count):
-    if cctv_num == len(cctv_list) - 1:
+    global result_num, board
+    if cctv_num == len(cctv_list):
+        sums = 0
+        for t in range(r):
+            for g in range(c):
+                if board[t][g] == 0:
+                    sums += 1
+        result_num = min(result_num, sums)
         return
-
     u, k = cctv_list[cctv_num][0], cctv_list[cctv_num][1]
     cc_list = [[], [], [], []]
     for i in range(4):
@@ -81,7 +87,7 @@ def DFS(cctv_num, count):
                 if board[k[0]][k[1]] == '#':
                     board[k[0]][k[1]] = 0
     elif cctv_list[cctv_num][2] == 4:
-        for y in range(-1, 2):
+        for y in range(-2, 2):
             result = cc_list[y] + cc_list[y+1] + cc_list[y+2]
             for k in result:
                 if board[k[0]][k[1]] == 0:
@@ -113,12 +119,11 @@ for row in range(r):
     for col in range(c):
         if board[row][col] != 0 and board[row][col] != 6:
             cctv_list.append([row, col, board[row][col]])
-cctv_list.sort(key=lambda board: board[2], reverse=True)
+cctv_list.sort(key=lambda board: board[2])
 DFS(0, 0)
 count = 0
 for x in range(r):
     for y in range(c):
         if board[x][y] == 0:
             count += 1
-pprint(board)
-print(count)
+print(result_num)
