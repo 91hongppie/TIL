@@ -15,19 +15,19 @@ def comb(nums, nums_list):
         nums_list.pop()
         comb(nums+1, nums_list)
 
-def DFS(num_list):
+def DFS(num_list, num):
     global count
-    for k in range(len(num_list)):
-        for u in range(len(num_list)):
-            if num_list[u] in Q[num_list[k]]:
-                if not visit[num_list[u]]:
-                    visit[num_list[u]] = True
-                    count += 1
-                    DFS(num_list)
+    for u in Q[num]:
+        if u in num_list:
+            if not visit[u]:
+                visit[u] = True
+                count += 1
+                DFS(num_list, u)
 
 
 N = int(input())
 points = list(map(int, input().split()))
+# print(points)
 result = 100000000000
 num = 1
 Q = [[] for _ in range(N+1)]
@@ -51,13 +51,11 @@ for u in comb_list:
     for i in num_list:
         if i not in u:
             b_list.append(i)
-    count = 0
+    count = 2
     visit[u[0]] = True
-    count += 1
-    DFS(u)
+    DFS(u, u[0])
     visit[b_list[0]] = True
-    count += 1
-    DFS(b_list)
+    DFS(b_list, b_list[0])
     if count == N:
         sum_u = 0
         sum_b = 0
