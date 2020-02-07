@@ -42,8 +42,8 @@ def find(ar, dis, enemy):
         for u in range(3):
             x1 = x + dx[u]
             y1 = y + dy[u]
-            if distance > 0:
-                if 0 <= x1 < r and 0 <= y1 < c:
+            if 0 <= x1 < r and 0 <= y1 < c:
+                if distance > 0:
                     if visit[x1][y1] == 0:
                         Q.append([x1, y1, distance-1])
                     else:
