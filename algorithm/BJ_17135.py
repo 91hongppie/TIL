@@ -31,18 +31,20 @@ def war(archers, count, pan):
     result = max(result, count)
 
 def find(ar, dis, enemy):
+    global Q
     Q.append([r, ar, dis])
     while Q:
-        x, y, distance = Q.pop()
+        x, y, distance = Q.popleft()
         for u in range(3):
             x1 = x + dx[u]
             y1 = y + dy[u]
-            if distance > 0:
-                if 0 <= x1 < r and 0 <= y1 < c:
+            if 0 <= x1 < r and 0 <= y1 < c:
+                if distance > 0:
                     if visit[x1][y1] == 0:
                         Q.append([x1, y1, distance-1])
                     else:
                         enemy.add((x1, y1))
+                        Q = deque()
                         return
 
             
