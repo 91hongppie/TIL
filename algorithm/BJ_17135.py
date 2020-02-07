@@ -24,16 +24,21 @@ def war(archers, count, pan):
             find(archer, dis, enemy_list)
         for k in enemy_list:
             row, col = k
+            if pan[row][col] == 0:
+                continue
             pan[row][col] = 0
             count += 1
         pan.pop()
         pan.appendleft([0 for _ in range(c)])
-    result = max(result, count)
+    # pprint(pan)
+    if count > result:
+        result = count
 
 def find(ar, dis, enemy):
+    global Q
     Q.append([r, ar, dis])
     while Q:
-        x, y, distance = Q.pop()
+        x, y, distance = Q.popleft()
         for u in range(3):
             x1 = x + dx[u]
             y1 = y + dy[u]
@@ -43,6 +48,7 @@ def find(ar, dis, enemy):
                         Q.append([x1, y1, distance-1])
                     else:
                         enemy.add((x1, y1))
+                        Q = deque()
                         return
 
             
