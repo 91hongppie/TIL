@@ -128,6 +128,14 @@ def update(request, article_pk):
     context = {'form': form, 'article': article, }
     return render(request, 'articles/form.html', context)
 
+@login_required
+def update(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    if request.method == 'POST':
+        pass
+    else:
+        form = ArticleForm(instance=article)
+    context = {'articles':article, 'form':form,}
 
 @require_POST
 def comments_create(request, article_pk):
