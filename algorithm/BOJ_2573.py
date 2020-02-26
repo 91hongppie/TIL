@@ -18,6 +18,8 @@ def DFS(r1, c1):
                             Q.append([x1, y1])
 
 
+
+
 r, c = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(r)]
 Q = deque()
