@@ -1,7 +1,6 @@
 import sys
 sys.stdin = open('BOJ_2573.txt', 'r')
 from pprint import pprint
-sys.setrecursionlimit(10**4)
 from collections import deque
 
 def BFS(r1, c1):
