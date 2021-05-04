@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <title>팩토리얼 계산</title>
@@ -7,12 +7,12 @@
 <body>
   <script>
     function fact(n) {
-      if( n<=1 ) return n;
-      return n*fact(n-1)
+    if( n<=1 ) return n;
+    return n*fact(n-1)
     }
     for(var i=1; i<10; i++) {
-      document.write(i + "! = " +fact(i) + "<br/>")
-      // console.log(i + "! = " +fact(i))
+      console.log(i + "! = " + fact(i));
+      document.write(i + "! = " + fact(i) + "<br />");
     }
   </script>
 </body>
