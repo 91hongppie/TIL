@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>연산자</title>
+</head>
+<body>
+  <script>
+    var a = 2;
+    var b = 3;
+    var c = [1, 2, 3];
+    var d = [1, 2, 3];
+    var e = c
+    console.log(c === d); // false - 양 쪽의 값과 타입이 모두 같아야한다. c 와 d 는 다른 메모리를 참조하고 있음
+    console.log(d === e); // true - 양 쪽의 값과 타입이 모두 같다. c 와 e 는 같은 메모리를 참조하고 있음
+    console.log(a == b); // 동등 연산자(equal operator)
+    console.log(null == undefined); // true
+    console.log(null === undefined); // false
+    console.log(a < b);
+    console.log(a <= b);
+    console.log(a >= b);
+    
+  </script>
+</body>
+</html>
