@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>함수 02</title>
+</head>
+<body>
+  <script>
+    /*
+    function 함수명 ( [인자...[,인자]] ) {
+      코드
+      return 반환값
+    }
+    */
+   // 함수를 사용하는 이유 : 재사용성, 유지보수 용이, 가독성
+   // 여러 곳에서 쉽게 사용할 수 있음
+   function numbering() {
+     var i = 0;
+     while (i < 20) {
+       document.write(i + '\n');
+       i++;
+     }
+     document.write("<br />")
+   }
+   for (var i = 0; i < 10; i++) {
+     numbering();
+   }
+  </script>
+</body>
+</html>

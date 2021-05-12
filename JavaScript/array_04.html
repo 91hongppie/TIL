@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>배열 02</title>
+</head>
+<body>
+  <script>
+    var li = ['a', 'b', 'c', 'd', 'e'];
+
+    // 'f'를 li의 맨 뒤에 'f' 요소를 추가한다.
+    li.push('f');
+    // li에서 맨 뒤의 요소를 뺀다.
+    li.pop();
+    li = li.concat(['f', 'g', 'h']);  // li와 ['f', 'g', 'h'] 를 연결하여 하나의 배열로 만든 다음에 return
+    li.unshift('z');  // li의 맨 앞에 'z' 요소를 추가한다.
+    // array.splice(index, howmany, elements,,,);
+    li.splice(2, 0, 'avs'); // li의 2번 index에서부터 0개를 삭제하고 'avs'를 추가한다.
+    li.splice(3, 1, 'marioz9', 'roxkd78'); // li의 3번 index에서부터 1개를 삭제하고 'marioz9', 'roxkd78' 을 추가한다. 삭제된 데이터를 return 한다.
+    alert(li);
+  </script>
+</body>
+</html>
