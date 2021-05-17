@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>객체 03</title>
+</head>
+<body>
+  <script>
+    var grades = {
+      'list': {'egoing': 10, 'k8805': 8, 'sorialgi': 80},
+      'show': function() {
+        for (var name in this.list) {
+          console.log(name, this.list[name])
+        }
+        // alert(this['list']['egoing']); // 여기서 this는 grades를 가리킨다. grades['list']['egoing']와 같다.
+      }
+    }
+    grades.show()
+  </script>
+</body>
+</html>

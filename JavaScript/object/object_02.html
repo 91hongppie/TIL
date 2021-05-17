@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>객체 02[배열]</title>
+</head>
+<body>
+  <ul>
+    <script>
+      var arr = ['a', 'b', 'c']; // 배열은 순서를 가지고 있다 0: 'a', 1: 'b', 2: 'c'
+      for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+      var grades = {'egoing':10, 'k8805':6, 'sorialge':80};
+      for (var name in grades) {
+        document.write("<li>key : "+name+", value : "+grades[name]+"<br/></li>");
+      }
+    </script>
+  </ul>
+</body>
+</html>

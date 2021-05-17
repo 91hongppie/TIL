@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">]
+  <title>정규표현식 01</title>
+</head>
+<body>
+  <script>
+    /* 컴파일.
+      검출하고자하는 패턴을 찾는 것
+    */
+    // 정규표현식 리터럴
+    // var pattern = /a-z/;
+    // 정규표현식 객체 생성자
+    var pattern = new RegExp('a'); // RegExp - Regular Expression의 약자
+    
+    // 정규표현식 메소드 실행
+    var word = "marioz9";
+    // RegExp.exec()
+    console.log(pattern.exec(word)); // 찾을패턴.exec(문자열) exec - 정규표현식이 찾고자하는 대상을 첫번째 인자로 전달해서 패턴이 찾는 정보를 대상에서 찾아서 배열로 리턴, 필요한 정보를 추출할 때 사용한다.
+    console.log(pattern.exec('abcd')); // 결과값 : ["a"]
+    console.log(pattern.test('abcd')); // 결과값 : true, test - 전달받은 인자의 정보 안에 찾고자하는 패턴이 존재하면 true 아닐 경우에는 false를 리턴한다. 필요한 정보의 존재유무를 테스트.
+    console.log(pattern.exec('ebcd')); // 결과값 : null
+    console.log(pattern.test('ebcd')); // 결과값 : false
+  
+    pattern = /a./; // .은 a 뒤에 어떤 문자가 와도 괜찮다.
+    console.log(pattern.exec('abcde')) // 결과값 : ["ab"]
+
+    /* 실행.
+      대상에 대해서 작업을 하는 것
+    */
+  </script>
+</body>
+</html>

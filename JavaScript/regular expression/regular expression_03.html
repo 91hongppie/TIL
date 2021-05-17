@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>정규표현식 03</title>
+</head>
+<body>
+  <script>
+    /* 
+    옵션 - 표현식 뒤에 i를 붙이면 대소문자를 구분하지 않는다.
+    */
+    var xi = /a/;
+    console.log("Abcde".match(xi)); // null
+    var oi = /a/i;
+    console.log("Abcde".match(oi)); // ["A"]
+    /*
+    표현식 뒤에 g를 붙이면 검색된 모든 결과를 리턴한다.
+    */
+    var xg = /a/;
+    console.log("abcdea".match(xg)); // ["a"]
+    var og = /a/g;
+    console.log("abceda".match(og)); // ["a", "a"]
+    var ig = /a/ig; // 문자열에서 패턴이 존재하는 모든 문자를 대소문자 구분없이 찾는다.
+    console.log("ABCDSEASDXSDSAabdscs".match(ig)); // ["A", "A", "A", "a"]
+
+  </script>
+  
+</body>
+</html>

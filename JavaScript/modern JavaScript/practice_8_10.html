@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>에라토스테네스의 채</title>
+</head>
+<body>
+  <script>
+    function Primes(n) {
+      // 에라토스테네스의 체로 2~n 사이의 소수 구하기
+      var p = [];
+      for (var i=2; i<=n; i++) {
+        p[i] = true;
+      }
+      var max = Math.floor(Math.sqrt(n));
+      var x = 2;
+      while (x<=max) {
+        for (var i=2*x; i<=n; i+=x) {
+          p[i] = false
+        }
+        while(!p[++x]);
+      }
+      // 소수만 꺼내 배열 primes에 저장
+      var primes = [], nprimes = 0;
+      for (var i=2; i<=n; i++) {
+        if (p[i]) {
+          primes[nprimes++] = i;
+        }
+      }
+      p = null; // 필요가 없어진 배열을 메모리에서 해제
+      // 소수 m개를 무작위로 선택하여 곱한 값을 반환하는 함수를 반한한다.
+      return function(m) {
+        for (var i=0, product=1; i<m; i++) {
+          product *= primes[Math.floor(Math.random()*nprimes)]; // Math.random() - 0~1 사이의 값을 랜덤으로 추출, nprimes = primes.length
+          // Math.floor(Math.random()*nprimes = 0~1 사이의 값을 랜덤으로 뽑아 primes.length와 곱한 값보다 작은 최대 정수 (0~primes.length 의 랜덤)
+        }
+        return product;
+      };
+    }
+    var primeProduct = Primes(100000);
+    console.log(primeProduct(2));
+    console.log(primeProduct(2))
+  </script>
+</body>
+</html>

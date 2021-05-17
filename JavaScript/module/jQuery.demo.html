@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <script src="jquery.js"></script>
+</head>
+<body>
+  <ul id='list'>
+    <li>empty</li>
+    <li>empty</li>
+    <li>empty</li>
+    <li>empty</li>
+  </ul>
+  <input type="button" value="execute" id="execute_btn">
+  <script>
+    $('#execute_btn').click(function () {
+      $('#list li').text('coding everybody');
+    })
+
+  </script>
+</body>
+</html>

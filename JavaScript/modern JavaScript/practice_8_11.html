@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>반복문 안에서 클로저 만들기</title>
+  <script>
+    window.onload = function() {
+      var elm = document.getElementsByTagName("input");
+      for (let i=0; i<elm.length; i++) {
+        elm[i].onclick = function() { // for 문이 돌면서 (elm[0].onclick, elm[1].onclick, elm[2].onclick) = console.log(i) 로 됐고 i = 3
+          console.log(i);             // let으로 할 경우 elm[0].onclick = console.log(0), elm[1].onclick = console.log(1), elm[2].onclick = console.log(2) 로 된다.
+        };
+      }
+    };
+  </script>
+</head>
+<body>
+  <input type="button" value="0">
+  <input type="button" value="1">
+  <input type="button" value="2">
+</body>
+</html>

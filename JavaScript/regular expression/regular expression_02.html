@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>정규표현식 02</title>
+</head>
+<body>
+  <script>
+    var pattern = /a/;
+    var str = "abcdef";
+    console.log(str.match(pattern)); // ["a"]
+    str = "bcdef";
+    str.match(pattern); // null
+    str = "abcdef";
+    str.replace(pattern, 'A'); // str = 'Abcdef'
+  </script>
+</body>
+</html>
