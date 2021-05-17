@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>유효범위 04</title>
+</head>
+<body>
+  <script>
+    for (var i=0; i<1; i++) {
+      var name = 'coding everybody'; // for 문 안에서 var로 선언하면 for문 밖에서도 사용할수있는 변수로 선언된다.
+      // 함수 안에서 var로 선언된 변수만 지역변수가 된다.
+    }
+    alert(name); // 'coding everybody'
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>유효범위 01</title>
+</head>
+<body>
+  <script>
+    var vscope = 'global'; // 전역변수
+    function fscope() {
+      var vscope = 'local';
+      var lv = 'local variables';
+      alert(vscope); // 'local', 지역변수
+      alert(lv);
+    }
+    fscope();
+    alert(vscope); // 'global'
+    alert(lv); // undefined
+  </script>
+</body>
+</html>

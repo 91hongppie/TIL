@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>유효범위 03</title>
+</head>
+<body>
+  <script>
+    (function() { // 전역변수를 한번도 만들고 싶지 않을 때
+      var MYAPP = {} // 전역변수를 한번만 호출해주면 된다.
+      MYAPP.calculator = {
+        'left' : null,
+        'right' : null
+      }
+      MYAPP.coordinate = {
+        'left' : null,
+        'right' : null
+      }
+
+      MYAPP.calculator.left = 10;
+      MYAPP.calculator.right = 20;
+      function sum() {
+        return MYAPP.calculator.left + MYAPP.calculator.right;
+      }
+      document.write(sum());
+    }()); // 함수를 정의하여 바로 호출(익명 함수)
+  </script>
+</body>
+</html>

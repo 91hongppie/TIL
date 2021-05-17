@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>유효범위 02</title>
+</head>
+<body>
+  <script>
+    function a () {
+      var i = 0; // i - 지역변수 var을 지우면 전역변수 i 를 0 으로 바꾼다.
+    }
+    for (var i = 0; i < 5; i++) { // i - 전역변수
+      a();
+      document.write(i);
+      
+    }
+  </script>
+</body>
+</html>
