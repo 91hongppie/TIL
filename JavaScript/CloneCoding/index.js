@@ -16,4 +16,4 @@ function handleClick() {
 function init() {
     title.addEventListener("click", handleClick);
 }
-init()
+init();
