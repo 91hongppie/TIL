@@ -10,7 +10,7 @@
       var frameWindow = document.getElementById("frame").contentWindow;
       var message = document.getElementById("message");
       var button = document.getElementById("button");
-      var targetOrigin = "*";
+      var targetOrigin = "*"; // 로컬에서 같은 경로인 "/"로 하면 작동을 안한다. 
       button.addEventListener("click", function() {
         frameWindow.postMessage(message.value, targetOrigin);
       }, false);
