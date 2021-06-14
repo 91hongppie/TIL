@@ -1,4 +1,4 @@
-// 이 방법은 Circle.prototype에 이미 생성된 Ellipse의 프로퍼티를 낭비하는 단점이 있다.
+// 이 방법은 Circle.prototype에 이미 생성된 Ellipse의 프로퍼티를 낭비하는 단점이 있습니다.
 function Ellipse(a, b) {
     this.a = a;
     this.b = b;
