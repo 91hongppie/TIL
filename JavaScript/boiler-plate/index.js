@@ -36,4 +36,5 @@ app.post("/register", (req, res) => {
   }) 
 })
 
+// 애플리케이션 서버에 port(3000)번 포트를 수신하도록 한다. function을 수행한다.
 app.listen(port, () => console.log(`Example app listening on port: ${port}`));

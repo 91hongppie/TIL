@@ -78,4 +78,61 @@
    module.exports = { User } // 다른 js 파일에서 쓸 수 있도록 exports를 쓴다.
    ```
 
-   
+
+
+
+## body-parser
+
+- 클라이언트 POST request data의 body로부터 파라미터를 편리하게 추출합니다.
+
+- 설치방법
+
+  - ```bash
+    npm install body-parser --save
+    ```
+
+  ```javascript
+  // index.js
+  const bodyParser = require("body-parser");
+  // application/x-www-form-urlencoded - 이렇게 된 데이터를 분석해서 가져올수있게 해준다.
+  app.use(bodyParser.urlencoded({extended: true}));
+  
+  // application/json - json으로 된 것을 분석해서 가져올수있게 해준다.
+  app.use(bodyParser.json());
+  ```
+
+  
+
+## Key.js
+
+- 비밀 정보를 로컬 환경과 배포 환경에서 다르게 가져오기 위해 사용한다.
+
+```javascript
+/*
+    process.env.NODE_ENV - local에서 하면 development로
+    배포 된 상태에서는 production으로 나온다.
+*/
+if (process.env.NODE_ENV === 'production') {
+    module.exports = require('./prod')
+} else {
+    module.exports = require('./dev')
+}
+```
+
+- index.js에서 require("key") 하여 사용한다.
+
+## Nodemon
+
+- 변경된 내용을 서버를 닫았다가 다시 열지 않아도 적용된다.
+
+- 개발 환경에서만 사용할 것
+
+- 설치방법
+
+  - ```bash
+    npm install nodemon --save-dev
+    ```
+
+  - 뒤에 -dev를 붙임으로써 개발환경에서만 적용된다.
+
+- package.json 파일의 scripts에 `"backend": "nodemon index.js",` 를 추가함으로써 `npm run backend` 로 사용할 수 있다.
