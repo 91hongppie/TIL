@@ -1,0 +1,10 @@
+#dragbox {
+  width: 150px;
+  border: 10px solid blue;
+}
+
+#dropbox {
+  width: 150px;
+  padding: 50px;
+  border: 10px solid blue;
+}
