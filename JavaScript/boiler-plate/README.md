@@ -304,3 +304,108 @@ if (process.env.NODE_ENV === 'production') {
   - toHexString()을 쓰지않으면 에러가 난다. 
 
   - toHexString()은 toString()에 포함되는 것으로 더 좁은 의미의 함수이기 때문에 예외발생률이 적어서 사용되는 것 같다.(MongoDB에서 제공하는 예제 코드에서도 toHexString()을 사용한다.)
+
+## Auth 기능 만들기
+
+- cookie에 저장된 Token을 가져와서 복호화를 한다.
+
+1. index.js
+
+```javascript
+const { auth } = require("./middleware/auth"), // auth를 가져온다.
+
+// /api/users/auth 를 통해 GET 요청이 들어온다.
+// auth를 호출하여 요청이 들어온 정보와 일치하는 유저를 찾는다. 일치하는 유저가 있으면 auth 함수에서 next를 하여 다음 함수로 넘어간다.
+// (req, res) =>  화살표 함수로 넘어온다.
+// 200과 json 데이터를 응답한다.
+app.get("/api/users/auth", auth, (req, res) => {
+
+  // 여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 True라는 말
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true, // role 0 -> 일반유저, role !== 0 관리자
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image
+
+  })
+})
+```
+
+2. middleware/auth.js
+
+```javascript
+const { User } = require("../models/User"); // User 모델을 가져온
+
+
+let auth = (req, res, next) => {
+
+    // 인증 처리를 하는 곳
+    // 클라이언트 쿠키에서 토큰을 가져온다.
+  	// 들어온 요청에서 쿠키에 있는 토큰을 token에 할당
+    let token = req.cookies.x_auth;
+
+    // 토큰을 복호화 한 후 유저를 찾는다.
+  	// 유저가 있으면 인증 Okay
+    // 유저가 없으면 인증 No
+    User.findByToken(token, (err, user) => {
+        if (err) throw err;
+        if (!user) return res.json({ isAuth: false, error: true });
+
+        req.token = token;
+        req.user = user;
+        next(); // index.js 에서 auth 다음으로 넘어가기 위해 next()를 호출한다.
+    })
+} 
+
+module.exports = { auth };
+```
+
+3. User.js
+
+```javascript
+userSchema.statics.findByToken = function(token, cb) {
+    var user = this;
+    
+    // 토큰을 decode 한다.
+  	// 유저를 찾으려고 decode하는데 token으로 찾을 수 있기 때문에 굳이 필요없는듯하다.
+    jwt.verify(token, 'secretToken', function(err, decoded) {
+        // 유저 아이디를 이용해서 유저를 찾은 다음에
+        // 클라이언트에서 가져온 token과 DB에 보관된 token이 일치하는지 확인
+				// 일치하는 정보가 있는지 찾는다 "_id": decoded는 없어도 된다.
+      	// "token": token만 있어도 token은 유일하기 때문에 찾을수 있다.
+      	// findOne은 MongoDB에서 지원하는 함수
+        user.findOne({ "_id": decoded, "token": token }, function(err, user) {
+            if (err) return cb(err);
+            cb(null, user);
+        })
+    })
+}
+```
+
+## 로그아웃
+
+1. 로그아웃 Route 만들기
+2. 로그아웃하려는 유저를 데이터 베이스에서 찾는다.
+3. 해당 유저의 토큰을 지워준다.
+
+```javascript
+// GET 요청을 보낸다.
+// auth를 통해 토큰과 일치하는 유저가 있는지 먼저 확인한다. 맞으면 auth에서 next()를 호출하여 다음 함수로 넘어간다.
+// findOneAndUpdate는 req의 정보와 일치하는 유저를 찾아 정보를 업데이트한다.
+// findOneAndUpdate(a, b, c) = a와 일치하는 유저를 찾아 b의 정보로 업데이트 한 다음에 c 함수를 실행한다.
+app.get("/api/users/logout", auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, // DB에서 user의 정보와 맞는 데이터를 찾는다.
+    { toke: "" },	// 찾은 데이터의 token 값을 비워준다.
+    (err, user) => {
+      if (err) return res.json({ sccess: false, err}); // 에러가 발생했을 때
+      return res.status(200).send({ // 모든게 무사히 끝났을 때 { success: true} 를 담아서 200 응답한다.
+        success: true
+      })
+    })
+})
+```
+

@@ -5,6 +5,7 @@ const express = require("express"),
     config = require("./config/key"),
     cookieParser = require("cookie-parser"),
     bodyParser = require("body-parser"),
+    { auth } = require("./middleware/auth"),
     { User } = require("./models/User");
 
 // application/x-www-form-urlencoded - 이렇게 된 데이터를 분석해서 가져올수있게 해준다.
@@ -24,7 +25,7 @@ mongoose.connect(config.mongoURI, {
 
 app.get("/", (req, res) => res.send("Hello World!~~~~~안녕하세요!!! 요즘 너무 더워요!! 땀이 너무 나요"))
 
-app.post("/register", (req, res) => {
+app.post("/api/users/register", (req, res) => {
   
   // 회원 가입 할 때 필요한 정보들을 client에서 가져오면
   // 그것들을 데이터 베이스에 넣어준다.
@@ -39,7 +40,7 @@ app.post("/register", (req, res) => {
   }) 
 })
 
-app.post("/login", (req, res) => {
+app.post("/api/users/login", (req, res) => {
   // 요청된 이메일을 데이터베이스에 있는지 찾는다.
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user) {
@@ -67,6 +68,37 @@ app.post("/login", (req, res) => {
   })
   })
 })
+
+
+app.get("/api/users/auth", auth, (req, res) => {
+
+  // 여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 True라는 말
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true, // role 0 -> 일반유저, role !== 0 관리자
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image
+
+  })
+})
+
+
+app.get("/api/users/logout", auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id },
+    { toke: "" },
+    (err, user) => {
+      if (err) return res.json({ sccess: false, err});
+      return res.status(200).send({
+        success: true
+      })
+    })
+})
+
+
 
 // 애플리케이션 서버에 port(3000)번 포트를 수신하도록 한다. function을 수행한다.
 app.listen(port, () => console.log(`Example app listening on port: ${port}`));
