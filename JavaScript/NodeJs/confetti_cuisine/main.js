@@ -3,5 +3,6 @@ const port = 3000,
     httpStatus = require("http-status-codes"),
     router = require("./router"),
     contentTypes = require("./content-types"),
-    utils = require("./utils
-    ")
+    utils = require("./utils");
+
+    
