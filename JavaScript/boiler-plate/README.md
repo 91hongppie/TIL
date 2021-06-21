@@ -409,3 +409,94 @@ app.get("/api/users/logout", auth, (req, res) => {
 })
 ```
 
+
+
+
+
+# React JS
+
+## React란?
+
+- 2013년 페이스북에서 출시한 라이브러리
+- module과 비슷하게 컴포넌트로 이뤄져 있어서 재사용성이 뛰어남
+- Virtual DOM
+  - 만약 10개의 리스트가 있다.
+  - 그 중에 한가지의 리스트만 Update 됐다.
+  - 그 바뀐 한 가지 아이템만 DOM에서 바꿔준다.
+  - 어떻게? (Real DOM에서는 전체  리스트를 다시 Reload 해야된다.)
+    - Virtual DOM은 Real DOM을 가볍게 copy한 것
+    - Virtual DOM이 이전 Virtual DOM에서 찍어둔 Snapshot과 비교를 해서 바뀐 부분을 찾는다.(이 과정을 diffing이라고 부름)
+    - Real DOM에서 바뀐 부분만 바꿔준다.
+
+## Create-React-App
+
+- 원래 리액트 앱을 처음 실행하기 위해선 webpack 이나 babel 같은 것을 설정하기 위해서 엄청나게 많은 시간이 걸렸다.
+  - babel - 최신 자바스크립트 문법을 지원하지 않는 브라우저들을 위해서 최신 자바스크립트 문법을 구형 브라우저에서도 돌아갈수있게 변환 시켜줌
+  - webpack - 복잡한 파일 구조를 webpack을 이용해서 번들화(묶어주는) 시켜준다. 많은 모듈들을 합쳐서 간단하게 만들어준다.
+
+### 시작하기
+
+- 파일구조를 새롭게 한다.
+
+  - client 폴더와 server 폴더를 만든다.
+    - server (Back-end)
+      - config
+      - middleware
+      - models
+      - index.js
+    - client (Front-end)
+
+- client 폴더로 이동한다.
+
+  - ```bash
+    cd client
+    ```
+
+- create-react-app
+
+  - ```bash
+    npx create-react-app .
+    ```
+
+## NPM VS NPX
+
+### What is NPM? (Node Package Manager)
+
+- 레지스트리(저장소) 역할
+
+- 어플리케이션 실행할 때
+
+- 배포할 때 build
+
+  - ```bash
+    npm run build
+    ```
+
+- npm install locally
+
+  - ```bash
+    npm install
+    ```
+
+  - 프로젝트 내의 node_modules에 다운 받아진다.
+
+- npm install globally
+
+  - ```bash
+    npm install -G
+    ```
+
+  - 컴퓨터 전체에서 사용할 수 있도록 다운 받아진다.
+
+- 만약 Install하는 npm을 다른 프로젝트에서 쓰지 않는다면 Global로 Install 할 필요가 없다. Disk Space를 낭비하지 않기 위해
+
+## NPX
+
+1. 원래 create-react-app 할 때 `npm install -g create-react-app` 이렇게 해서 Global 디렉토리에 다운받음
+2. 이제는 npx를 이용하여 그냥  create-react-app을 이용 할 수 있음
+3. npx가 npm registry에서 create-react-app을 찾아서(look up) 다운로드 없이 실행 시켜준다.
+
+### NPX의 장점
+
+1. Disk Space를 낭비하지 않을 수 있다.
+2. 항상 최신 버전을 사용할 수 있다.
