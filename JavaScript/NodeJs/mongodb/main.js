@@ -1,8 +1,3 @@
-const MongoDB = require("mongodb").MongoClient, // 몽고DB 모듈의 요청
-    dbURL = "mongodb://localhost:27017",
-    dbName = "recipe_db";
-
-
 MongoDB.connect(dbURL, (error, client) => { // 로컬 데이터베이스 서버 연결 설정
     if (error) throw error;
     let db = client.db(dbName); // 몽고DB 서버로의 recipe_db 데이터베이스 연결 취득
