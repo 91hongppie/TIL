@@ -500,3 +500,184 @@ app.get("/api/users/logout", auth, (req, res) => {
 
 1. Disk Space를 낭비하지 않을 수 있다.
 2. 항상 최신 버전을 사용할 수 있다.
+
+## Ceate-React-App 구조
+
+1. Webpack이 관리하는 폴더 = src
+2. 이미지 파일 같은 것들을 앱에 넣고 싶을때는 src에 넣어야 Webpack이 모아주는 역할을 할 수 있다.
+
+### 폴더구조
+
+- _actions, _reducer
+  - Redux를 위한 구조
+- component/views
+  - 이 안에는 Page들을 넣는다.
+- component/views/Sections
+  - 이 안에는 해당 페이지에 관련된 css 파일이나, component 들을 넣는다.
+- app.js
+  - Routing 관련 일을 처리한다.
+- Config.js
+  - 환경 변수같은 것들을 정하는 곳이다.
+- hoc
+  - Higher Order Component의 약자로 다른 component에서 이용할 수 있게한다.
+- utils
+  -  여러 군데에서 쓰일수 있는 것들을 이곳에 넣어둬서 어디서든 쓸 수 있게 해줌
+
+## React Router Dom
+
+- 설치 방법
+
+  - ```bash
+    npm install react-router-dom --save
+    ```
+
+- 참조 웹사이트
+
+  - https://reacttraining.com/react-router/web/example.basic
+
+- App.js 에 코드 추가
+
+  - ```javascript
+    import {
+      BrowserRouter as Router,
+      Switch,
+      Route,
+      Link
+    } from "react-router-dom";
+    
+    import LandingPage from './components/views/LandingPage/LandingPage';
+    import LoginPage from './components/views/LoginPage/LoginPage';
+    import RegisterPage from './components/views/RegisterPage/RegisterPage';
+    ```
+
+  - 위 부분을 import 한다.
+
+  - LandingPage, LoginPage, RegisterPage는 js 파일이다.
+
+  - ```javascript
+    function App() {
+      return (
+        <Router>
+          <div>
+            
+    
+            {/*
+              A <Switch> looks through all its children <Route>
+              elements and renders the first one whose path
+              matches the current URL. Use a <Switch> any time
+              you have multiple routes, but you want only one
+              of them to render at a time
+            */}
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/register" component={RegisterPage} />
+            </Switch>
+          </div>
+        </Router>
+      )
+    }
+    ```
+
+  - localhost:3000/ 경로로 들어오면 LandingPage를 보여준다.
+
+  - localhost:3000/login 경로로 들어오면 LoginPage를 보여준다.
+
+  - localhost:3000/register 경로로 들어오면 RegisterPage를 보여준다.
+
+## Flow & Axios
+
+- 지금까지 request를 할 때는 Client 부분이 없었기에  POSTMAN을 이용해서 함
+
+- 이제는 React JS 부분에서 Request를 보내면 되는데 그 때 사용할게  Axios
+
+  - Axois - jQuery를 사용할 때 Ajax라고 보면된다.
+
+  - ```bash
+    npm install axios --save 로 다운받는다.
+    ```
+
+- 사용 방법
+
+  - LandingPage.js
+
+    - ```javascript
+      import React,{ useEffect} from 'react'
+      import axios from 'axios';
+      ```
+
+    - ```javascript
+      function LandingPage() {
+          useEffect(() => {
+              axios.get('http://localhost:5000/api/hello') // 서버 URL에 get 요청을 보낸다.
+              .then(response => console.log(response.data))	// 응답을 받아 로그를 찍는다.
+          }, [])
+          return (
+              <div>
+                  LandingPage 랜딩 페이지다 
+              </div>
+          )
+      }
+      
+      export default LandingPage
+      ```
+
+
+
+## CORS 이슈
+
+- Server는 localhost:5000, Client는 localhost:3000 을 사용한다.
+- 이렇게 두개의 다른 포트를 가지고 있는 서버는 설정을 하지않으면 Request를 보낼 수 없다.
+  - CORS 정책 때문에
+  - Cross-Origin Resource Sharing(CORS)
+  - 보안을 위해서
+
+1. 여러가지 방법이 있지만 여기서는 Proxy 사용하는 방법으로 해결한다.
+
+- https://create-react-app.dev/docs/proxying-api-requests-in-development
+
+2. package.json에 코드 추가하는 방법
+
+- ```javascript
+  "proxy": "http://localhost:5000"
+  ```
+
+3. Proxy 안쓰고  back에서 직접 cors 해결하기
+
+- ```bash
+  npm install cors -- save
+  ```
+
+- cors 불러오기
+
+- ```javascript
+  let express = require("express");
+  
+  // Express의 middleware 불러오기
+  let bodyParser = require("body-parser"),
+      cors = require("cors");
+  
+  // Express의 객체 생성
+  let app = express();
+  ```
+
+- cors_origin 선언하기
+
+  - ```javascript
+    // 로컬 개발용 기본 cors origin (front 3000)
+    let cors_origin = ['http://localhost:3000'];
+    ```
+
+- cors 옵션 추가하기
+
+  - ```javascript
+    app.use(
+    	cors({
+        origin: cors_origin, // 허락하고자 하는 요청 주소
+        credentials: true // true로 하면 설정한 내용을 response 헤더에 추가해준다.
+      })
+    );
+    ```
+
+- 끝
+
