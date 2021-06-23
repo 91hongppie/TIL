@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hello world</title>
+  <!-- React 엘리먼트를 body에 직접 렌더링하지 않는 이유는? -->
+  <!-- 다른 라이브러리나 <body>를 조작하는 브라우저 확장 프로그램과 충돌하는 것을 방지하기 위해서다.  -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>  <!-- React 라이브러리를 불러온다. -->
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>  <!-- ReactDOM 라이브러리를 불러온다. -->
+</head>
+<body>
+  <div id="content"></div>  <!-- Hello World 뷰를 위한 React 코드를 작성한다. -->
+  <script type="text/javascript"> // <div> 요소를 정의하여 React UI를 추가한다.
+    var h1= React.createElement('h1', null, 'Hello World~!!!!!!!'); // h1 요소를 React 엘리먼트로 생성하여 변수에 담는다.
+    ReactDOM.render(  // h1 요소를 ID가 content인 실제 DOM에 렌더링한다.
+      h1,
+      document.getElementById('content')
+    )
+  </script>
+</body>
+</html>
