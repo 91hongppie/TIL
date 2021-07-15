@@ -156,6 +156,8 @@
 
 # 성능
 
+## 성능향상(다중 Transaction)
+
 - 지연시간
 
   - 패킷을 보내기 시작한 시점에서 패킷을 받기 시작한 시점까지 걸리는 전송 지연 시간
@@ -201,4 +203,14 @@
      2. Persistent HTTP = 3590ms - 600ms * 3 = 1790ms
      3. Pipelined HTTP = TCP연결(400ms) + 지연시간(100ms) + HTTP Req(10ms) + 지연시간(100ms) + HTTP Res 헤더(10ms) + HTTP Res 바디(10ms) + 지연시간(100ms) + HTTP Req 이미지(10ms) + 지연시간(100ms) + 이미지 첫번째(100ms) + 이미지 두번째(100ms) + 이미지 세번째(100ms) + TCP종결(200ms) = 1340ms
 
-     
+
+## 성능향상2 (네트워트 구조)
+
+### Web Cache(Proxy Server)
+
+- ISP(Internet Service Provider)에서 비용절감을 위하여 이전에 가져온 적이 있는 문서를 DB에 임시 저장해 놓았다가 동일문서가 다시 요청될 때 재사용하는 것
+- Web Cache는 중개상인의 개념(Server이자 Client의 역할을 한다.)
+- Web Cache가 주는 이득
+  - 요청에 대한 응답시간의 단축
+  - 제공하는 교통량 증가 - 더 많은 사용자 수용
+  - 더 적은 서버 용량으로 더 많은 사용자 지원
