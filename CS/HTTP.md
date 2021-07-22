@@ -201,7 +201,7 @@
 
      1. 기본 HTTP = 930ms * 3 + 830ms = 3620ms
      2. Persistent HTTP = 3590ms - 600ms * 3 = 1790ms
-     3. Pipelined HTTP = TCP연결(400ms) + 지연시간(100ms) + HTTP Req(10ms) + 지연시간(100ms) + HTTP Res 헤더(10ms) + HTTP Res 바디(10ms) + 지연시간(100ms) + HTTP Req 이미지(10ms) + 지연시간(100ms) + 이미지 첫번째(100ms) + 이미지 두번째(100ms) + 이미지 세번째(100ms) + TCP종결(200ms) = 1340ms
+     3. Pipelined HTTP = TCP연결(400ms) + 지연시간(100ms) + HTTP Req(10ms) + 지연시간(100ms) + HTTP Res 헤더(10ms) + HTTP Res 바디(10ms) + 지연시간(100ms) + HTTP Req 이미지(10ms) + 지연시간(100ms) + (HTTP Res 헤더(10ms) + 이미지 첫번째(100ms)) + (HTTP Res 헤더(10ms)) + 이미지 두번째(100ms) + (HTTP Res 헤더(10ms) + 이미지 세번째(100ms)) + TCP종결(200ms) = 1370ms
 
 
 ## 성능향상2 (네트워트 구조)
