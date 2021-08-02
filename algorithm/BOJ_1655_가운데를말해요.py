@@ -5,11 +5,16 @@ N = int(input())
 numList = []
 for i in range(N):
     num = int(input())
-    numList.append(num)
-    numList.sort()
-    if len(numList) % 2 == 0:
-        print(numList[(len(numList)//2)-1])
+    if len(numList) < 2:
+        if len(numList) == 0:
+            numList.append(num)
+            left = num
+        else:
+            if numList[0] > num:
+                numList = [num] + numList         
+            else:
+                numList.append(num)
+            left, right = numList
     else:
-        print(numList[len(numList)//2])
-    
-print([1] + [1, 2, 3])
+        
+
