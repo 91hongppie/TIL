@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      /* CSS는 설정이 겹치는 경우에는 뒤쪽에 있는 선언을 선택한다. */
+      /*방문하지 않은 사이트 */
+      a:link {
+        color: black;
+      }
+
+      /* 방문한 사이트 */
+      /* 보안적인 문제로 visited에서 사용할수 있는 속성들이 제한적이다. */
+      a:visited {
+        color: olivedrab;
+      }
+
+      /* 마우스를 해당 객체 위에 올렸을 때 */
+      a:hover {
+        color: yellow;
+      }
+
+      /* 마우스 왼쪽 버튼을 누르고 있을 때 */
+      a:active {
+        color: green;
+      }
+      /* 객체가 포커스 됐을 때, tap을 눌렀을 때, 객체가 선택됐을 때 */
+      input:focus {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://opentutorials.org">방문함</a>
+    <a href="https://a.a">방문안함</a>
+    <input type="text"">
+  </body>
+</html>
