@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      li { color: red; }
+      #idsel { color: blue !important;}
+      .classsel { color: green; }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>html</li>
+      <li id="idsel" class="classsel" style="color: powderblue;">css</li>
+      <li>javascript</li>
+    </ul>
+    <h1>스타일 적용 우선순위</h1>
+    <h3>뭐가 더 구체적이고 명시적인가에 따라 우선순위가 달라진다.</h3>
+    <h3>tag selector가 가장 포괄적이고 style attribute가 가장 구체적이고 명시적이다.</h3>
+    <ol>
+      <li>selector에 !important를 추가하면 최우선으로 하게된다. (좋은 방법은 아니다)</li>
+      <li>style attribute</li>
+      <li>id selector</li>
+      <li>class selector</li>
+      <li>tag selector</li>
+    </ol>
+  </body>
+</html>
