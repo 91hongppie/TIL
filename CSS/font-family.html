@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* 
+      serif = 글꼴에서 사용하는 장식
+      Sans-serif = 장식이 없는 글꼴 Sans는 부정의 표현
+      monospace = 고정폭, 글자와 띄어쓰기 등의 폭이 같다.
+      font-weight = 글자의 두께
+      line-height = 자간, 1.2 일 때 폰트 사이즈의 1.2배만큼 줄 간격이 떨어진다. 픽셀로 고정할 수 있다.
+      */
+      #type1 {
+        font-size: 5rem;
+        font-family: "Helvetica Neue", arial, verdana, monospace;
+        font-weight: bold;
+        line-height: 2;
+      }
+      #type2 {
+        /* 
+        font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit; 
+        */
+        font: bold 5rem/2 "Helvetica Neue", arial, verdana, serif;
+
+      }
+    </style>
+  </head>
+  <body>
+    <p id="type1">
+      Hello world<br>
+      Hello world
+    </p>
+    <p id="type2">
+      Hello world<br>
+      Hello world
+    </p>
+  </body>
+</html>
