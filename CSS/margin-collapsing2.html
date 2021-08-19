@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    /* 
+      부모 태그가 투명한 상태라면 자식 태그와 부모 태그의 마진이 겹쳐진다.
+      부모 엘리먼트가 시각적 요소가 없는 투명한 상태일 때 부모 마진값과 자식 마진값 중에 큰 값이 자식 엘리먼트의 마진값으로 사용된다.
+    */
+    #parent {
+      /* border: 1px solid tomato;  */
+      margin-top: 100px;
+    }
+    #child {
+      background-color: powderblue;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div id="child">
+      Hello world
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    div {
+      margin: 10px;
+      /* 내부 컨텐트의 영역이 150px */
+      width: 150px;
+      /* box-sizing을 지정해주면 보더 박스의 width를 150px로 지정 */
+      box-sizing: border-box;
+
+    }
+    #small {
+      border: 10px solid black;
+    }
+    #large {
+      border: 30px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="small">Hello</div>
+  <div id="large">Hello</div>
+</body>
+</html>

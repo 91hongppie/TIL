@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    body {
+      padding-top: 30px;
+    }
+    #parent, #other {
+      border: 5px solid tomato;
+    }
+    #large {
+      height: 10000px;
+      background-color: tomato;
+    }
+    #me {
+      background-color: black;
+      color: white;
+      
+      /* 
+        position: fixed 스크롤을 이동해도 같은 위치에 고정되어 있다.
+        fixed에서 width와 height를 지정하지 않으면 콘텐트 크기에 맞춰진다.
+      */
+      position: fixed;
+      height: 30px;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="other">
+    other
+  </div>
+  <div id="parent">
+    parent
+    <div id="me">me</div>
+  </div>
+  <div id="large">large</div>
+</body>
+</html>

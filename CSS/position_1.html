@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    html {
+      border: 1px solid gray;
+    }
+    div {
+      border: 5px solid tomato;
+      margin: 10px;
+    }
+    #me {
+      /* 
+        기본적으로 CSS의 각각의 엘리먼트들의 position 기본값은 static 이다.
+        static은 offset 값을 무시한다.
+        offset에 따라 이동하고 싶으면 position을 relative로 설정한다.
+      */
+      position: relative;
+      /* 
+        left, right를 둘 다 쓰면 left가 우선이고
+        top, bottom을 둘 다 쓰면 top이 우선이다.
+      */
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="other">
+    other
+  </div>
+  <div id="parent">
+    parent
+    <div id="me">me</div>
+  </div>
+</body>
+</html>

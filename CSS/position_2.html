@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    #parent, #other {
+      border: 5px solid tomato;
+    }
+    #me {
+      background-color: black;
+      color: white;
+      /* 
+        position만 설정하면 부모 엘리먼트를 기준으로 해서 자기가 원래 위치해야 할 위치가 left, top 값으로 지정된다.
+        position: absulute; 로 지정하면 부모 요소와의 링크가 끊기면서 부모와 무관해진다.
+        하지만 상위 요소의 position이 지정되면 해당 요소에 속한다.
+      */
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="other">
+    other
+  </div>
+  <div id="parent">
+    parent
+    <div id="me">me</div>
+  </div>
+</body>
+</html>

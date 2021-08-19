@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    /* 
+      시각적 요소가 없다면 그 태그의 마진값은 위쪽과 아래쪽의 마진값 중에 더 큰 값이 그 태그의 마진값이 된다.
+    */
+    #empty {
+      margin-top: 50px;
+      margin-bottom: 100px;
+      /* border: 1px solid tomato; */
+    }
+    #normal {
+      background-color: powderblue;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="empty"></div>
+  <div id="normal">normal</div>
+</body>
+</html>
