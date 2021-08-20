@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      background-color: powderblue;
+      height: 200px;
+      /* flex는 바깥쪽의 컨테이너에 display를 flex로 한다 */
+      display: flex;
+      /* 태그들을 정렬하기 위한 방법, row를 기본값으로 갖는다. */
+      /* column-reverse를 하면 container 영역의 밑에서 부터 오름차순으로 정렬 */
+      flex-direction: column;
+    }
+    .item {
+      background-color: tomato;
+      color: white;
+      border: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
+</body>
+</html>

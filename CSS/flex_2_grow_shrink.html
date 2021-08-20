@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      background-color: powderblue;
+      height: 200px;
+      display: flex;
+      flex-direction: row;
+    }
+    .item {
+      background-color: tomato;
+      color: white;
+      border: 1px solid white;
+      /* flex-grow: 1 = container 영역에 꽉 차게 1/n 하여 item을 채운다.  */
+      /* flex-grow: 1; */
+    }
+    .item:nth-child(1) {
+      flex-basis: 150px;
+      flex-shrink: 1;
+    }
+    .item:nth-child(2) {
+      /* flex-grow: 2; */
+      /* flex-basis = 요소의 기본 크기 */
+      flex-basis: 150px;
+      /* flex-shrink:0 =  아이템의 크기가 브라우저의 크기에 따라 변하지 않는다. */
+      /* flex-shrink:1 =  아이템의 크기가 브라우저의 크기에 따라 변한다. */
+      /* 하나의 아이템은 flex-shrink:1 다른 아이템은 flex-shrink:2 이면 1과 2의 비율로 변형된다.*/
+      flex-shrink: 2;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
+</body>
+</html>
