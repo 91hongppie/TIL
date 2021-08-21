@@ -2,6 +2,9 @@
 <html>
 <head>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     .container {
       background-color: powderblue;
       height: 200px;
@@ -13,10 +16,10 @@
       color: white;
       border: 1px solid white;
       /* flex-grow: 1 = container 영역에 꽉 차게 1/n 하여 item을 채운다.  */
-      /* flex-grow: 1; */
+      flex-grow: 1;
     }
     .item:nth-child(1) {
-      flex-basis: 150px;
+      flex-basis: 100px;
       flex-shrink: 1;
     }
     .item:nth-child(2) {

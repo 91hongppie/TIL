@@ -23,9 +23,9 @@
 
 ## flex-wrap
 
-1. nowrap
+1. nowrap = item이 부모요소를 벗어나더라도 한줄에 배치한다.
 2. wrap = container의 크기보다 item의 크기가 크면 줄바꿈 된다.
-3. wrap-reverse = wrap 반대로
+3. wrap-reverse = wrap 반대로(위에 있는 객체들이 밑으로 내려간다.)
 
 
 
@@ -81,7 +81,22 @@
 .item { flex: flex-grow [flex-shrink] [flex-basis]; }
 ```
 
+## flex-grow
 
+- container의 크기에 맞게 1/n하여 item을 채운다.
+- flex-grow: 1 = container의 안에 요소를 꽉 채운다.
+- flex-grow: 0 = container의 안에 요소들을 요소의 크기에 따라 맞추지 않고 채운다.
+
+## flex-basis
+
+- item요소의 최대 크기
+- flex-grow를 같이 쓰면 무시되는거 같다.
+
+## flex-shrink
+
+- flex-shrink: 0 = 아이템의 크기가 브라우저의 크기에 따라 변하지 않는다.
+- flex-shrink: 1 = 아이템의 크기가 브라우저의 크기에 따라 변한다.
+- flex-shrink: 1,  flex-shrink: 2 가 있으면 1과 2의 비율로 변형된다.
 
 ## order
 
