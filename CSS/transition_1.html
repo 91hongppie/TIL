@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    a {
+      font-size: 3rem;
+      display: inline-block;
+      /* transition-property: font-size transform; 모든 효과에 대해서 변화가 일어났을 때 전환이 일어난다. */
+      /* transition-property: transform; transform에만 적용하여 변화가 일어났을 때 전환이 일어난다. */
+      transition-duration: 0.1s;
+      transition: font-size 1s, transform 1s;
+      transition-delay: 1s;
+    }
+    a:active {
+      font-size: 2rem;
+      transform: translate(20px, 20px);
+    }
+  </style>
+</head>
+<body>
+  <a href="#">Click</a>
+</body>
+</html>

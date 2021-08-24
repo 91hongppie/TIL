@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: black;
+      transition: all 1s;
+    }
+    div {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      width: 100px;
+      height: 50px;
+      transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+      /* easeInOutBack */
+
+      transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+      /* easeInOutBack */
+    }
+
+    div:hover {
+      height: 400px;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+      document.querySelector('body').style.backgroundColor = 'white'
+    }
+  </script>
+</head>
+
+<body>
+  <div>TRANSITION</div>
+</body>
+
+</html>
