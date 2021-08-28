@@ -18,7 +18,7 @@ branch 만들기 : git checkout -b 브랜치이름(브랜치를 만들면서 이
 
 수정하고
 
-커밋하고 
+커밋하고
 
 git push origin 브랜치이름
 
